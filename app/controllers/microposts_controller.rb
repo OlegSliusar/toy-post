@@ -5,6 +5,7 @@ class MicropostsController < ApplicationController
   # GET /microposts.json
   def index
     @microposts = Micropost.all
+    @micropost = nil
   end
 
   # GET /microposts/1
@@ -28,11 +29,14 @@ class MicropostsController < ApplicationController
 
     respond_to do |format|
       if @micropost.save
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully created.' }
-        format.json { render :show, status: :created, location: @micropost }
+        format.html { redirect_to @micropost,
+          notice: 'Micropost was successfully created.' }
+        format.json { render :show, status: :created,
+          location: @micropost }
       else
         format.html { render :new }
-        format.json { render json: @micropost.errors, status: :unprocessable_entity }
+        format.json { render json: @micropost.errors,
+          status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +46,14 @@ class MicropostsController < ApplicationController
   def update
     respond_to do |format|
       if @micropost.update(micropost_params)
-        format.html { redirect_to @micropost, notice: 'Micropost was successfully updated.' }
-        format.json { render :show, status: :ok, location: @micropost }
+        format.html { redirect_to @micropost,
+          notice: 'Micropost was successfully updated.' }
+        format.json { render :show, status: :ok,
+          location: @micropost }
       else
         format.html { render :edit }
-        format.json { render json: @micropost.errors, status: :unprocessable_entity }
+        format.json { render json: @micropost.errors,
+          status: :unprocessable_entity }
       end
     end
   end
@@ -56,7 +63,8 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost.destroy
     respond_to do |format|
-      format.html { redirect_to microposts_url, notice: 'Micropost was successfully destroyed.' }
+      format.html { redirect_to user,
+        notice: 'Micropost was uccessfully destroyed.' }
       format.json { head :no_content }
     end
   end
