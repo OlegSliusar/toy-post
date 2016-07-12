@@ -20,7 +20,8 @@
 
 <% @microposts.reverse_each do |micropost| %>
 
-  <h4><b><%= link_to @user.name, @user %></b>   Content:</h4>
+  <h4><b><%= link_to @user.name, @user %></b> |
+    Created at: <%= micropost.created_at %> | Content:</h4>
   <h3><%= micropost.content %></h3>
   <%= link_to 'Show', micropost %>
   <%= link_to 'Delete', micropost, method: :delete, data:

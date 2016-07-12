@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to 'Microposts', new_micropost_path %>
 <h1>Users</h1>
 
 <table>
@@ -18,8 +18,6 @@
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Delete', user, method: :delete, data:
-        { confirm: 'Are you crazy?' } %></td>
       </tr>
     <% end %>
   </tbody>

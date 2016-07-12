@@ -11,6 +11,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @microposts = @user.microposts
+    console
   end
 
   # GET /users/new

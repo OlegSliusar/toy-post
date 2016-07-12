@@ -12,6 +12,7 @@ class MicropostsController < ApplicationController
   def show
     @users = User.all
     @user = User.find(@micropost.user_id)
+    console
   end
 
   # GET /microposts/new
@@ -31,7 +32,7 @@ class MicropostsController < ApplicationController
 
     respond_to do |format|
       if @micropost.save
-        format.html { redirect_to @micropost,
+        format.html { redirect_to new_micropost_path,
           notice: 'Micropost was successfully created.' }
         format.json { render :show, status: :created,
           location: @micropost }

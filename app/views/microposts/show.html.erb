@@ -3,7 +3,7 @@
 <p>
   <strong>User:</strong>
   <b><%= link_to User.find(@micropost.user_id).name, @user %></b>
-</p>
+| Created at: <%= @micropost.created_at %></p>
 
   <p>
   <h3><%= @micropost.content %></h3>
