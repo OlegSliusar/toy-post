@@ -12,7 +12,7 @@ class MicropostsController < ApplicationController
   def show
     @users = User.all
     @user = User.find(@micropost.user_id)
-    console
+    #console
   end
 
   # GET /microposts/new
