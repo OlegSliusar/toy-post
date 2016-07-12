@@ -12,18 +12,17 @@
   <%= @user.email %>
 </p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Edit User', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
 
 <% unless @microposts.empty? %>
 <h1>Microposts</h1>
 
-<% @microposts.each do |micropost| %>
+<% @microposts.reverse_each do |micropost| %>
 
-  <h4><b><%= link_to @user.name, @user %></b>
-  Content:</h4>
+  <h4><b><%= link_to @user.name, @user %></b>   Content:</h4>
   <h3><%= micropost.content %></h3>
-
+  <%= link_to 'Show', micropost %>
   <%= link_to 'Delete', micropost, method: :delete, data:
   { confirm: 'Are you sure?' } %>
 

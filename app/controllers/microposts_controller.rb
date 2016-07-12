@@ -11,10 +11,12 @@ class MicropostsController < ApplicationController
   # GET /microposts/1.json
   def show
     @users = User.all
+    @user = User.find(@micropost.user_id)
   end
 
   # GET /microposts/new
   def new
+    @microposts = Micropost.all
     @micropost = Micropost.new
   end
 
@@ -63,8 +65,8 @@ class MicropostsController < ApplicationController
   def destroy
     @micropost.destroy
     respond_to do |format|
-      format.html { redirect_to user,
-        notice: 'Micropost was uccessfully destroyed.' }
+      format.html { redirect_to User.find(@micropost.user_id),
+        notice: 'Micropost was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
