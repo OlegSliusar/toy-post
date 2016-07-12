@@ -5,12 +5,12 @@ class MicropostsController < ApplicationController
   # GET /microposts.json
   def index
     @microposts = Micropost.all
-    @micropost = nil
   end
 
   # GET /microposts/1
   # GET /microposts/1.json
   def show
+    @users = User.all
   end
 
   # GET /microposts/new
