@@ -17,7 +17,7 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/new
   def new
-    @microposts = Micropost.all
+    #@microposts = Micropost.all   #not necessary
     @micropost = Micropost.new
   end
 
