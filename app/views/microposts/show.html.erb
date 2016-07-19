@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
-
-<p>
+<h4>
   <strong>User:</strong>
   <b><%= link_to User.find(@micropost.user_id).name, @user %></b>
-| Created at: <%= @micropost.created_at %></p>
-
-  <p>
+| Created at: <%= @micropost.created_at %></h4>
+<style>
+table, td {
+    border: 1px solid black;
+}
+</style>
+<table>
+  <td>
   <h3><%= @micropost.content %></h3>
-</p>
+</td>
+</table>
 
 <%= link_to 'Edit', edit_micropost_path(@micropost) %> |
 <%= link_to 'Back', User.find(@micropost.user_id) %>

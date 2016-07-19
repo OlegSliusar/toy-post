@@ -1,10 +1,11 @@
 class MicropostsController < ApplicationController
   before_action :set_micropost, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   # GET /microposts
   # GET /microposts.json
   def index
     @microposts = Micropost.all
+    #console
   end
 
   # GET /microposts/1
@@ -12,13 +13,14 @@ class MicropostsController < ApplicationController
   def show
     @users = User.all
     @user = User.find(@micropost.user_id)
-    console
+    #console
   end
 
   # GET /microposts/new
   def new
     @microposts = Micropost.all
     @micropost = Micropost.new
+    #console
   end
 
   # GET /microposts/1/edit
@@ -76,6 +78,10 @@ class MicropostsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_micropost
       @micropost = Micropost.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(@micropost.user_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

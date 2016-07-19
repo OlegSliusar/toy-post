@@ -5,18 +5,20 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    #console
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
     @microposts = @user.microposts
-    console
+    #console
   end
 
   # GET /users/new
   def new
     @user = User.new
+    #console
   end
 
   # GET /users/1/edit
