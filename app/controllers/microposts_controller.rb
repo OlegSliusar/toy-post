@@ -17,7 +17,7 @@ class MicropostsController < ApplicationController
 
   # GET /microposts/new
   def new
-    @microposts = Micropost.all   
+    @microposts = Micropost.all
     @micropost = Micropost.new
   end
 
@@ -37,9 +37,9 @@ class MicropostsController < ApplicationController
         format.json { render :show, status: :created,
           location: @micropost }
       else
-        format.html { render :new }
         format.json { render json: @micropost.errors,
           status: :unprocessable_entity }
+          format.html { render :new }
       end
     end
   end
