@@ -25,11 +25,9 @@
         <td><%= link_to User.find(micropost.user_id).name,
         User.find(micropost.user_id) %></td>
         <td><%= link_to 'Show', micropost %></td>
-        <td><%= link_to 'Edit', edit_micropost_path(micropost) %></td>
+        <td><%= link_to 'Edit', edit_micropost_path(micropost) if micropost.user_id != 1 %></td>
       </tr>
       <% end %>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Back', microposts_path %>
