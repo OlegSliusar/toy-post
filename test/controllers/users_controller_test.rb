@@ -2,7 +2,8 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:one)
+    @user = User.new(name: "Example User", email: "user@example.com",
+                      password: "foobar", password_confirmation: "foobar")
   end
 
   test "should get index" do
@@ -16,14 +17,18 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create user" do
-    assert_difference('User.count') do
-      post users_url, params: { user: { email: @user.email, name: @user.name } }
+    get users_new_path
+    assert_difference('User.count', 1) do
+      post users_url, params: { user: { name: "Example User",
+                                email: "user@example.com", password: "foobar",
+                                password_confirmation: "foobar" } }
     end
 
-    assert_redirected_to user_url(User.last)
+    assert_redirected_to user_url(@user)
   end
 
   test "should show user" do
+    @user.save
     get user_url(@user)
     assert_response :success
   end

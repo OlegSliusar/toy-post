@@ -2,6 +2,8 @@ require 'test_helper'
 
 class MicropostsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    User.create(name: "Example User", email: "user@example.com",
+                      password: "foobar", password_confirmation: "foobar")
     @micropost = microposts(:one)
   end
 
@@ -21,7 +23,7 @@ class MicropostsControllerTest < ActionDispatch::IntegrationTest
         user_id: @micropost.user_id } }
     end
 
-    assert_redirected_to micropost_url(Micropost.last)
+    assert_redirected_to new_micropost_url
   end
 
   test "should show micropost" do
