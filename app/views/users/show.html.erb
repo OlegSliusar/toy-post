@@ -2,31 +2,32 @@
 
 <h1>User</h1>
 
-<p>
+<h2>
   <strong>Name:</strong>
   <%= @user.name %>
-</p>
+</h2>
 
-<p>
+<h2>
   <strong>Email:</strong>
   <%= @user.email %>
-</p>
-
-<%= link_to 'Edit User', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
-
+</h2>
+<h2>
+<%= link_to 'Edit User', edit_user_path(@user) if @user.id != 1 %>
+</h2>
 <% unless @microposts.empty? %>
 <h1>Microposts</h1>
 
 <% @microposts.reverse_each do |micropost| %>
 
-  <h4><b><%= link_to @user.name, @user %></b> |
-    Created at: <%= micropost.created_at %> | Content:</h4>
+  <h4>
+    <b><%= link_to @user.name, @user %></b>
+     | Created at: <%= micropost.created_at %> | Content:
+  </h4>
   <h3><%= micropost.content %></h3>
   <%= link_to 'Show', micropost %>
   <%= link_to 'Delete', micropost, method: :delete, data:
-  { confirm: 'Are you sure?' } %>
-
+  { confirm: 'Are you sure?' }  if @user.id != 1 %>
+  <h3>--------------------------------------------</h3>
   <% end %>
   <% else %>
   <h3>No microposts.</h3>
