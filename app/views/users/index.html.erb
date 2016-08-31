@@ -1,6 +1,7 @@
 <p id="notice"><%= notice %></p>
 <h1>Users</h1>
-
+<% @users ||= [] %>
+<% unless @users.empty? %>
 <table>
   <thead>
     <tr>
@@ -19,8 +20,11 @@
     <% end %>
   </body>
 </table>
+<% else %>
+      <h3>No users.</h3>
+<% end %>
 
-<br>
-
-<%= link_to 'New User', new_user_path %> |
-<%= link_to 'Back', microposts_path %>
+<h2>
+  <%= link_to 'New User', new_user_path %> |
+  <%= link_to 'Back', new_micropost_path %>
+</h2>

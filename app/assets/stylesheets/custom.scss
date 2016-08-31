@@ -54,6 +54,10 @@ h2 {
   color: $gray-light;
 }
 
+h3 {
+  text-align: center;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -61,7 +65,7 @@ p {
 
 /* header */
 
-.logo {
+#logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;

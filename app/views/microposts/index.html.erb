@@ -2,8 +2,10 @@
 
 
 <h1>Microposts</h1>
-<%= link_to 'New Micropost', new_micropost_path %>
+<h2><%= link_to 'New Micropost', new_micropost_path %></h2>
+<% @microposts ||= [] %>
 
+<% unless @microposts.empty? %>
 <table>
   <thead>
     <tr>
@@ -25,5 +27,8 @@
         <td><%= link_to 'Edit', edit_micropost_path(micropost) %></td>
       </tr>
     <% end %>
+<% else %>
+  <h3>No microposts.</h3>
+<% end %>
   </tbody>
 </table>

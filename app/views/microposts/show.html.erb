@@ -11,4 +11,4 @@
 
 <%= link_to 'Edit', edit_micropost_path(@micropost)  if @micropost.user_id != 1 %>
 <%= render html: " | " if @micropost.user_id != 1 %>
-<%= link_to 'Back', User.find(@micropost.user_id) %>
+<%= link_to 'Back', new_micropost_path %>

@@ -3,7 +3,8 @@
 <h1>Microposts</h1>
 
 <%= render 'form', micropost: @micropost %>
-<% unless @microposts.nil? %>
+<% @microposts ||= [] %>
+<% unless @microposts.empty? %>
 
 <table>
   <thead>
@@ -20,12 +21,15 @@
       <tr>
         <td><%= micropost.content %></td>
         <td><%= micropost.created_at %></td>
-        <td><%= link_to micropost.user.name,
-        micropost.user %></td>
+          <td><%= link_to micropost.user.name, 
+          micropost.user unless micropost.user.nil? %></td>
         <td><%= link_to 'Show', micropost %></td>
-        <td><%= link_to 'Edit', edit_micropost_path(micropost) if micropost.user_id != 1 %></td>
+        <td><%= link_to 'Edit',
+        edit_micropost_path(micropost) if micropost.user_id != 1 %></td>
       </tr>
       <% end %>
-    <% end %>
+<% else %>
+      <h3>No microposts.</h3>
+<% end %>
   </tbody>
 </table>
