@@ -2,7 +2,7 @@
 
 <h1>Microposts</h1>
 
-<%= render 'form', micropost: @micropost %>
+<%= render 'form', micropost: @micropost if logged_in? %>
 <% @microposts ||= [] %>
 <% unless @microposts.empty? %>
 
