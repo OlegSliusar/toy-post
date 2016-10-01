@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-
 <h1>Microposts</h1>
-<h2><%= link_to 'New Micropost', new_micropost_path %></h2>
+
+<% if logged_in? %>
+  <%= render 'form', micropost: @micropost %>
+<% else %>
+  <h2><%= link_to 'Sign up', new_user_path %></h2>
+<% end %>
+
 <% @microposts ||= [] %>
 
 <% unless @microposts.empty? %>

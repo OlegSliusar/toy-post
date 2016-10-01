@@ -3,6 +3,7 @@ class MicropostsController < ApplicationController
 
   def index
     @microposts = Micropost.all
+    @micropost = Micropost.new
   end
 
   def show
@@ -12,7 +13,6 @@ class MicropostsController < ApplicationController
 
   def new
     @microposts = Micropost.all
-    @micropost = Micropost.new
   end
 
   def edit
@@ -20,17 +20,16 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
-
     respond_to do |format|
       if @micropost.save
-        format.html { redirect_to new_micropost_path,
-          notice: 'Micropost was successfully created.' }
+        flash[:success] = "Micropost was successfully created."
+        format.html { redirect_to :back }
         format.json { render :show, status: :created,
           location: @micropost }
       else
         format.json { render json: @micropost.errors,
           status: :unprocessable_entity }
-          format.html { render :new }
+          format.html { redirect_to :back }
       end
     end
   end
@@ -38,8 +37,8 @@ class MicropostsController < ApplicationController
   def update
     respond_to do |format|
       if @micropost.update(micropost_params)
-        format.html { redirect_to @micropost,
-          notice: 'Micropost was successfully updated.' }
+        flash[:success] = "Micropost was successfully updated."
+        format.html { redirect_to @micropost }
         format.json { render :show, status: :ok,
           location: @micropost }
       else

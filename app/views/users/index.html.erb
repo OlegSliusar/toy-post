@@ -1,30 +1,7 @@
 <p id="notice"><%= notice %></p>
-<% @users ||= [] %>
-<% unless @users.empty? %>
-<h1>Users</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <body>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user.name, user %></td>
-        <td><%= user.email %></td>
-      </tr>
-    <% end %>
-  </body>
-</table>
+<% if @users.any? %>
+  <%= render 'shared/are_users' %>
 <% else %>
-      <h1>No users.</h1>
+  <%= render 'shared/no_users' %>
 <% end %>
-
-<h2>
-  <%= link_to 'New User', new_user_path %> |
-  <%= link_to 'Back', new_micropost_path %>
-</h2>

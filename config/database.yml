@@ -9,7 +9,7 @@ development:
 
 test:
   adapter: postgresql
-  database: dcaclab_development
+  database: dcaclab_test
   host: localhost
   pool: 5
   timeout: 5000
@@ -18,7 +18,7 @@ test:
 
 production:
   adapter: postgresql
-  database: dcaclab_development
+  database: dcaclab_production
   host: localhost
   pool: 5
   timeout: 5000

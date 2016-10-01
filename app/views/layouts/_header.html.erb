@@ -1,11 +1,11 @@
 <header class="navbar navbar-fixed-top">
   <div class="container" >
-    <%= link_to "Toy Blogpost", '/', id: "logo" %>
+    <%= link_to "Toy Post", root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Home",   '/' %></li>
-        <li><%= link_to "Users",   '/users' %></li>
-        <li><%= link_to "About",   '/static_pages/about' %></li>
+        <li><%= link_to "Home",   root_path %></li>
+        <li><%= link_to "Users",  users_path %></li>
+        <li><%= link_to "About",  about_path %></li>
         <% if logged_in? %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
