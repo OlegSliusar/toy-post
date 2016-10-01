@@ -6,7 +6,7 @@ User.create!(name:  "Oleh Sliusar",
 
 names_emails = {}
 
-99.times do
+999.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   name = "#{first_name} #{last_name}"
@@ -15,6 +15,7 @@ names_emails = {}
     redo
   end
   names_emails[name] = email
+  # Implement somehow alphabet sorting
 end
 
 names_emails.each do |name, email|
