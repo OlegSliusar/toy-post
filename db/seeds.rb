@@ -1,11 +1,12 @@
 User.create!(name:  "Oleh Sliusar",
              email: "oleh@olehsliusar.com",
              password:              "foobar",
-             password_confirmation: "foobar")
+             password_confirmation: "foobar",
+             admin: true)
 
 names_emails = {}
 
-9999.times do
+99.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   name = "#{first_name} #{last_name}"

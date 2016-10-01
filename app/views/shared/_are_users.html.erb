@@ -17,6 +17,12 @@
       <tr>
         <td><%= link_to user.name, user %></td>
         <td><%= user.email %></td>
+        <% if !current_user.nil? && current_user.admin? && !current_user?(user) %>
+        <td>
+           | <%= link_to "delete", user, method: :delete,
+                                         data: { confirm: "You sure?" } %>
+        </td>
+        <% end %>
       </tr>
     <% end %>
   </body>
