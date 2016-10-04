@@ -12,7 +12,6 @@ class MicropostsController < ApplicationController
   end
 
   def new
-    @microposts = Micropost.all
   end
 
   def edit

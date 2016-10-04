@@ -1,4 +1,4 @@
-<header class="navbar navbar-fixed-top">
+<header class="navbar">
   <div class="container" >
     <%= link_to "Toy Post", root_path, id: "logo" %>
     <nav>
@@ -22,6 +22,7 @@
           </li>
         <% else %>
           <li><%= link_to "Log in", login_path %></li>
+          <li><%= link_to "Sign up", signup_path %></li>
         <% end %>
       </ul>
     </nav>
