@@ -1,17 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Microposts</h1>
+<h1>Feed</h1>
 
 <% if logged_in? %>
   <%= render 'form', micropost: @micropost %>
 <% end %>
-
-<% @microposts ||= [] %>
 
 <% if @microposts.any? %>
     <ol class="microposts">
       <%= render @microposts %>
     </ol>
 <% else %>
-  <h3>No microposts.</h3>
+  <h1>No posts.</h1>
 <% end %>

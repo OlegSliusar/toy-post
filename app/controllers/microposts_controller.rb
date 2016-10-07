@@ -1,17 +1,15 @@
 class MicropostsController < ApplicationController
-  before_action :set_micropost, only: [:show, :edit, :update, :destroy]
+  before_action :set_micropost,  only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:edit, :update, :create, :destroy]
+  before_action :correct_user,   only: :destroy
 
   def index
     @microposts = Micropost.all
-    @micropost = Micropost.new
+    @micropost = current_user.microposts.build if logged_in?
   end
 
   def show
-    @users = User.all
     @user = User.find(@micropost.user_id)
-  end
-
-  def new
   end
 
   def edit
@@ -19,17 +17,12 @@ class MicropostsController < ApplicationController
 
   def create
     @micropost = current_user.microposts.build(micropost_params)
-    respond_to do |format|
-      if @micropost.save
-        flash[:success] = "Micropost was successfully created."
-        format.html { redirect_to :back }
-        format.json { render :show, status: :created,
-          location: @micropost }
-      else
-        format.json { render json: @micropost.errors,
-          status: :unprocessable_entity }
-          format.html { redirect_to :back }
-      end
+    if @micropost.save
+      flash[:success] = "Post was successfully created."
+      redirect_to :back
+    else
+      flash[:danger] = "Post can't be blank and should have no more than 240 characters."
+      redirect_to :back
     end
   end
 
@@ -50,11 +43,8 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    respond_to do |format|
-      format.html { redirect_to User.find(@micropost.user_id),
-        notice: 'Micropost was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Micropost was successfully destroyed."
+    redirect_to request.referrer || root_url
   end
 
   private
@@ -67,5 +57,12 @@ class MicropostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def micropost_params
       params.require(:micropost).permit(:content)
+    end
+
+    def correct_user
+      unless current_user.admin?
+        @micropost = current_user.microposts.find_by(id: params[:id])
+        redirect_to root_url if @micropost.nil?
+      end
     end
 end

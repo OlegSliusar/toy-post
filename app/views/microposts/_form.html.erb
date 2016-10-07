@@ -13,11 +13,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :new_micropost %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, placeholder: "Post something..."  %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Post" %>
+    <%= f.submit "Create post" %>
   </div>
 <% end %>

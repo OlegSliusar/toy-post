@@ -5,7 +5,7 @@
   <b><%= link_to @micropost.user.name, @user %></b>
 | Created at: <%= @micropost.created_at %></p>
 
-<p><h3><%= @micropost.content %></h3></p>
+<h3><%= @micropost.content %></h3>
 
 <%= link_to 'Edit', edit_micropost_path(@micropost) %>
 <%= render html: " | " %>
