@@ -1,31 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>User</h1>
+<h1><%= @user.name %></h1>
 
-<h2>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</h2>
+<h4><%= mail_to @user.email, @user.email %></h4>
 
-<h2>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</h2>
-
-<% unless @microposts.empty? %>
-<h1>Microposts</h1>
-
-<% @microposts.reverse_each do |micropost| %>
-
-  <h4>
-    <b><%= link_to @user.name, @user %></b>
-     | Created at: <%= micropost.created_at %> | Content:
-  </h4>
-  <h3><%= micropost.content %></h3>
-  <%= link_to 'Show', micropost %>
-  <%= link_to 'Delete', micropost, method: :delete, data: 
-  { confirm: 'Are you sure?' } %>
-  <% end %>
-  <% else %>
+<% if @microposts.any? %>
+  <h3>Microposts (<%= @user.microposts.count %>)</h3>
+  <ol class="microposts">
+    <%= render @microposts %>
+  </ol>
+<% else %>
   <h3>No microposts.</h3>
 <% end %>

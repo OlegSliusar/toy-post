@@ -6,7 +6,7 @@ User.create!(name:  "Oleh Sliusar",
 
 names_emails = {}
 
-999.times do
+9.times do
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   name = "#{first_name} #{last_name}"
@@ -24,4 +24,13 @@ names_emails.each do |name, email|
                email: email,
                password:              password,
                password_confirmation: password)
+end
+
+users = User.order(:created_at).take(10)
+#50.times do
+users.each do |user|
+  content = Faker::PhoneNumber.phone_number # Lorem.sentence(5)
+  content = "Call me #{content}"
+  # users.each { |user| 
+  user.microposts.create!(content: content) #}
 end
