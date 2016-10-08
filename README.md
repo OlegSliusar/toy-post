@@ -2,7 +2,7 @@
 
 ##Learning Project
 
-This is the second application for the
+This is modified second application for the
 [*Ruby on Rails Tutorial*](http://www.railstutorial.org/)
 by [Michael Hartl](http://www.michaelhartl.com/).
 
@@ -11,7 +11,7 @@ by [Michael Hartl](http://www.michaelhartl.com/).
 To get started with the app, clone the repo and then install the needed gems:
 
 ```
-$ bundle install --without production
+$ bundle install
 ```
 
 Next, migrate the database:
