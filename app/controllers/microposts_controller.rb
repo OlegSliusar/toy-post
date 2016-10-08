@@ -19,10 +19,10 @@ class MicropostsController < ApplicationController
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
       flash[:success] = "Post was successfully created."
-      redirect_to :back
+      redirect_to request.referrer || root_url
     else
       flash[:danger] = "Post can't be blank and should have no more than 240 characters."
-      redirect_to :back
+      redirect_to request.referrer || root_url
     end
   end
 

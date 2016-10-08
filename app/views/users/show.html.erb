@@ -4,11 +4,10 @@
 
 <h4><%= mail_to @user.email, @user.email %></h4>
 
+<h3><%= @user.microposts.count %> microposts</h3>
+
 <% if @microposts.any? %>
-  <h3>Microposts (<%= @user.microposts.count %>)</h3>
   <ol class="microposts">
     <%= render @microposts %>
   </ol>
-<% else %>
-  <h3>No microposts.</h3>
 <% end %>
