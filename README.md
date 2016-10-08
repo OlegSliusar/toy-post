@@ -2,7 +2,7 @@
 
 ##Learning Project
 
-This is modified second application for the
+This is modified version of second application for the
 [*Ruby on Rails Tutorial*](http://www.railstutorial.org/)
 by [Michael Hartl](http://www.michaelhartl.com/).
 
