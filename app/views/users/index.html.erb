@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
-
-<% if @users.any? %>
-  <%= render 'are_users' %>
-<% else %>
-  <%= render 'no_users' %>
-<% end %>
+<div class="">
+  <% if @users.any? %>
+    <%= render 'are_users' %>
+  <% else %>
+    <%= render 'no_users' %>
+  <% end %>
+</div>
